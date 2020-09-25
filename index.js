@@ -8,6 +8,19 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+// Database Init
+const mysql = require('mysql')
+const myConnection = require('express-myconnection')
+const dbConfig = require('./db-config')
+const config = {
+    host: dbConfig.database.host,
+    user: dbConfig.database.user,
+    password: dbConfig.database.password,
+    port: dbConfig.database.port,
+    database: dbConfig.database.database
+}
+app.use(myConnection(mysql, config, 'pool'))
+
 // Testing API
 app.get('/', (req, res) => {
     res.send('Belajar EXPRESS')
