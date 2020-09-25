@@ -1,8 +1,15 @@
 const express = require('express')
 const app = express()
 
+// Body-Parser: Convert RawData to JSON
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+app.use(bodyParser.json())
+
 // Testing API
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Belajar EXPRESS')
 })
 
