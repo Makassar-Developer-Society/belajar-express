@@ -21,6 +21,14 @@ const config = {
 }
 app.use(myConnection(mysql, config, 'pool'))
 
+//CORS Setting
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
+
 // Testing API
 app.get('/', (req, res) => {
     res.send('Belajar EXPRESS')
