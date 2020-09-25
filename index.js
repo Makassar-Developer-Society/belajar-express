@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 
 // Routing
 const contactRoute = require('./routes/contact')
-app.use('/api/contact', contactRoute)
+app.use('/api', contactRoute)
 
 // Testing API
 app.get('/', (req, res) => {
