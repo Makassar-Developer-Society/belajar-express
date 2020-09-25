@@ -71,4 +71,19 @@ app.put('/contact/(:id)', (req, res) => {
     })
 })
 
+// DELETE Data
+app.delete('/contact/(:id)', (req, res) => {
+    req.getConnection((err, con) => {
+        con.query('DELETE FROM tb_contact WHERE id = ?', [req.params.id], (err, rows, fields) => {
+            if (err) {
+                res.status(400).json(err)
+            } else {
+                res.status(200).json(rows, {
+                    message: 'Data Removed'
+                })
+            }
+        })
+    })
+})
+
 module.exports = app
