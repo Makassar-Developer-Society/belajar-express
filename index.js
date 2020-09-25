@@ -29,6 +29,10 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Routing
+const contactRoute = require('./routes/contact')
+app.use('/api/contact', contactRoute)
+
 // Testing API
 app.get('/', (req, res) => {
     res.send('Belajar EXPRESS')
